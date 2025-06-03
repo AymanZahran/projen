@@ -6,7 +6,13 @@ import { JsonFile } from "../json";
  * MCP configuration for VS Code workspaces.
  */
 export class VsCodeMcp extends Component {
-  private readonly content: any;
+* MCP configuration for VS Code workspaces.
+ */
+export class VsCodeMcp extends Component {
+  private readonly content: { version: number; projects: any[] };
+  public readonly file: JsonFile;
+
+  constructor(vscode: VsCode) {
   public readonly file: JsonFile;
 
   constructor(vscode: VsCode) {
