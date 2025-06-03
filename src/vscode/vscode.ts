@@ -1,6 +1,7 @@
 import { VsCodeRecommendedExtensions } from "./extensions";
 import { VsCodeLaunchConfig } from "./launch-config";
 import { VsCodeSettings } from "./settings";
+import { VsCodeMcp } from "./mcp";
 import { Component } from "../component";
 import { Project } from "../project";
 
@@ -8,6 +9,7 @@ export class VsCode extends Component {
   private _launchConfig?: VsCodeLaunchConfig;
   private _settings?: VsCodeSettings;
   private _extensions?: VsCodeRecommendedExtensions;
+  private _mcp?: VsCodeMcp;
 
   constructor(project: Project) {
     super(project);
@@ -35,5 +37,13 @@ export class VsCode extends Component {
     }
 
     return this._extensions;
+  }
+
+  public get mcp() {
+    if (!this._mcp) {
+      this._mcp = new VsCodeMcp(this);
+    }
+
+    return this._mcp;
   }
 }
